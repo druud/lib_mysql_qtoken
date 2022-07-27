@@ -1,4 +1,4 @@
-lib\_mysqludf\_skeleton
+lib\_mysql\_qtoken
 =======================
 
 Installation
