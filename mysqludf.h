@@ -31,7 +31,7 @@
 #include <stdio.h>
 #include <string.h>
 #ifdef __WIN__
-typedef unsigned __int64 ulonglong;	/* Microsofts 64 bit types */
+typedef unsigned __int64 ulonglong;  /* Microsoft's 64 bit types */
 typedef __int64 longlong;
 #else
 typedef unsigned long long ulonglong;
@@ -54,8 +54,9 @@ int strncmp_caseins(char *str1, char *str2, size_t num);
 int charinstr(char *str, char c, size_t num);
 char *copy_argname(char *att, unsigned long length);
 
-#define TRIM_BACKQUOTE(fnull) (fnull+(int)(fnull[0]=='`'))		// Skip starting backquote
-#define RETURN_ERR(msg) { strcpy(message, msg); return 1; }		// Set error message and return in %_init functions
-#define ATTRIBUTE_COMPARE(i, str, len) (args->attribute_lengths[i] == len && strncmp_caseins(args->attributes[i], str, len) == 0)
+#define TRIM_BACKQUOTE(fnull) (fnull+(int)(fnull[0]=='`'))   // Skip starting backquote
+#define RETURN_ERR(msg) { strcpy(message, msg); return 1; }  // Set error message and return in %_init functions
+#define ATTRIBUTE_COMPARE(i, str, len) (args->attribute_lengths[i] == (len) && strncmp_caseins(args->attributes[i], (str), (len)) == 0)
 
 #endif /* MYSQLUDF_H_ */
+

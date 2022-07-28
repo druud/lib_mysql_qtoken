@@ -24,15 +24,15 @@
  */
 char *strncpy_alloc(const char *str, unsigned long length)
 {
-	if (str == NULL) return NULL;
+    if (str == NULL) return NULL;
 
-	char *newstr = (char *)malloc((length+1) * sizeof(char));
-	if (newstr == NULL) return NULL;
+    char *newstr = (char *)malloc((length+1) * sizeof(char));
+    if (newstr == NULL) return NULL;
 
-	strncpy(newstr, str, length);
-	newstr[length] = '\0';
+    strncpy(newstr, str, length);
+    newstr[length] = '\0';
 
-	return newstr;
+    return newstr;
 }
 
 /**
@@ -41,15 +41,15 @@ char *strncpy_alloc(const char *str, unsigned long length)
  */
 void **ptr_calloc(size_t nelem, size_t elsize)
 {
-	void **ptr = (void **)malloc(nelem * elsize + sizeof(int));
-	if (ptr == NULL) return NULL;
+    void **ptr = (void **)malloc(nelem * elsize + sizeof(int));
+    if (ptr == NULL) return NULL;
 
-	*(int *)ptr = nelem;
+    *(int *)ptr = nelem;
 
-	ptr = (void **)((int*)ptr + 1);
-	memset(ptr, 0, nelem * elsize);
+    ptr = (void **)((int*)ptr + 1);
+    memset(ptr, 0, nelem * elsize);
 
-	return ptr;
+    return ptr;
 }
 
 /**
@@ -59,29 +59,29 @@ void **ptr_calloc(size_t nelem, size_t elsize)
 void ptr_free(void **ptr)
 {
     int i;
-	for (i=0; i < *((int *)ptr - 1); i++) {
-		if (ptr[i]) free(ptr[i]);
-	}
+    for (i=0; i < *((int *)ptr - 1); i++) {
+        if (ptr[i]) free(ptr[i]);
+    }
 
-	free((int*)ptr-1);
+    free((int*)ptr-1);
 }
 
 /**
- * Compare 2 (not \0 term) strings case insensative, specifying the length
+ * Compare 2 (not \0 term) strings case insensitive, specifying the length
  */
 int strncmp_caseins(char *str1, char *str2, size_t num)
 {
-	char c1, c2;
+    char c1, c2;
     int i;
 
-	for (i=0; i<num; i++) {
-		c1 = (str1[i] >= 65 && str1[i] <= 90) ? str1[i] + 32 : str1[i]; /* Change to lower case */
-		c2 = (str2[i] >= 65 && str2[i] <= 90) ? str2[i] + 32 : str2[i]; /* Change to lower case */
+    for (i=0; i<num; i++) {
+        c1 = (str1[i] >= 65 && str1[i] <= 90) ? str1[i] + 32 : str1[i]; /* Change to lower case */
+        c2 = (str2[i] >= 65 && str2[i] <= 90) ? str2[i] + 32 : str2[i]; /* Change to lower case */
 
-		if (c1 != c2) return (c1 < c2) * -2 + 1;   /* Could have used q?a:b, but... nerd power */
-	}
+        if (c1 != c2) return (c1 < c2) * -2 + 1;   /* Could have used q?a:b, but... nerd power */
+    }
 
-	return 0;
+    return 0;
 }
 
 /**
@@ -91,11 +91,11 @@ int charinstr(char *str, char c, size_t num)
 {
     int i;
 
-	for (i=0; i<num && str[i]; i++) {
-		if (str[i] == c) return i;
-	}
+    for (i=0; i<num && str[i]; i++) {
+        if (str[i] == c) return i;
+    }
 
-	return -1;
+    return -1;
 }
 
 /**
@@ -103,27 +103,28 @@ int charinstr(char *str, char c, size_t num)
  */
 char *copy_argname(char *att, unsigned long length)
 {
-	char *attcl = att;
-	char *str, *ptr;
-	char quoting = 0;
+    char *attcl = att;
+    char *str, *ptr;
+    char quoting = 0;
 
-	for (ptr=att; ptr<att+length; ptr++) {
-		if (*ptr == '`') quoting != quoting;
-		 else if (!quoting && *ptr == '.') attcl = ptr+1;
-	}
+    for (ptr=att; ptr<att+length; ptr++) {
+        if (*ptr == '`') quoting != quoting;
+         else if (!quoting && *ptr == '.') attcl = ptr+1;
+    }
 
-	length = length - (attcl-att);
+    length = length - (attcl-att);
 
-	if (!quoting) {
-		if (attcl[0] == '`') { attcl++; length--; }
-		if (*(attcl+length-1) == '`') length--;
-	}
+    if (!quoting) {
+        if (attcl[0] == '`') { attcl++; length--; }
+        if (*(attcl+length-1) == '`') length--;
+    }
 
-	str = (char *)malloc(length + 1);
-	if (!str) return NULL;
+    str = (char *)malloc(length + 1);
+    if (!str) return NULL;
 
-	strncpy(str, attcl, length);
-	str[length] = 0;
+    strncpy(str, attcl, length);
+    str[length] = 0;
 
-	return str;
+    return str;
 }
+

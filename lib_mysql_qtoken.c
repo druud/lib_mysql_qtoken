@@ -27,24 +27,24 @@
 #endif
 
 /* These must be right or mysqld will not find the symbol! */
-#ifdef	__cplusplus
+#ifdef __cplusplus
 extern "C" {
 #endif
-	DLLEXP int lib_mysql_qtoken_info_init   (UDF_INIT *initid, UDF_ARGS *args, char *message);
-	DLLEXP void lib_mysql_qtoken_info_deinit(UDF_INIT *initid);
-	/* For functions that return STRING or DECIMAL */
-	DLLEXP char *lib_mysql_qtoken_info      (UDF_INIT *initid, UDF_ARGS *args, char *result, unsigned long *length, char *is_null, char *error);
+    DLLEXP int lib_mysql_qtoken_info_init   (UDF_INIT *initid, UDF_ARGS *args, char *message);
+    DLLEXP void lib_mysql_qtoken_info_deinit(UDF_INIT *initid);
+    /* For functions that return STRING or DECIMAL */
+    DLLEXP char *lib_mysql_qtoken_info      (UDF_INIT *initid, UDF_ARGS *args, char *result, unsigned long *length, char *is_null, char *error);
 
-	/* For functions that return REAL */
-	/* DLLEXP double lib_mysql_qtoken_info(UDF_INIT *initid, UDF_ARGS *args, char *is_null, char *error); */
-	/* For functions that return INTEGER */
-	/* DLLEXP longlong lib_mysql_qtoken_info(UDF_INIT *initid, UDF_ARGS *args, char *is_null, char *error); */
+    /* For functions that return REAL */
+    /* DLLEXP double lib_mysql_qtoken_info(UDF_INIT *initid, UDF_ARGS *args, char *is_null, char *error); */
+    /* For functions that return INTEGER */
+    /* DLLEXP longlong lib_mysql_qtoken_info(UDF_INIT *initid, UDF_ARGS *args, char *is_null, char *error); */
 
-	/* If you are doing an Aggregate function you'll need these too */
-	/* DLLEXP void lib_mysql_qtoken_info_clear( UDF_INIT* initid, char* is_null, char* is_error ); */
-	/* DLLEXP void lib_mysql_qtoken_info_add( UDF_INIT* initid, UDF_ARGS* args, char* is_null, char* is_error ); */
+    /* If you are doing an Aggregate function you'll need these too */
+    /* DLLEXP void lib_mysql_qtoken_info_clear( UDF_INIT* initid, char* is_null, char* is_error ); */
+    /* DLLEXP void lib_mysql_qtoken_info_add( UDF_INIT* initid, UDF_ARGS* args, char* is_null, char* is_error ); */
 
-#ifdef	__cplusplus
+#ifdef __cplusplus
 }
 #endif
 
@@ -56,7 +56,7 @@ extern "C" {
 
 int lib_mysql_qtoken_info_init(UDF_INIT *initid, UDF_ARGS *args, char *message)
 {
-	return 0;
+    return 0;
 }
 
 void lib_mysql_qtoken_info_deinit(UDF_INIT *initid)
@@ -69,9 +69,10 @@ void lib_mysql_qtoken_info_deinit(UDF_INIT *initid)
 /* longlong lib_mysql_qtoken_info(UDF_INIT *initid, UDF_ARGS *args, char *is_null, char *error) */
 
 /* For functions that return STRING or DECIMAL */
-char* lib_mysql_qtoken_info(UDF_INIT *initid, UDF_ARGS *args, char* result, unsigned long* length,	char *is_null, char *error)
+char* lib_mysql_qtoken_info(UDF_INIT *initid, UDF_ARGS *args, char* result, unsigned long* length, char *is_null, char *error)
 {
-	strcpy(result, PACKAGE_STRING);
-	*length = strlen(PACKAGE_STRING);
-	return result;
+    strcpy(result, PACKAGE_STRING);
+    *length = strlen(PACKAGE_STRING);
+    return result;
 }
+
