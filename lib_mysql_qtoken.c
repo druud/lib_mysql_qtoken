@@ -1,8 +1,8 @@
 /*
- * Skeleton libary for MySQL.
- * A set of MySQL user defined functions (UDF) to [DESCRIPTION]
+ * Plugin libary for MySQL.
+ * A set of MySQL user defined functions (UDF) to implement QTOKEN_CHECK.
  *
- * Copyright (C) [YYYY YOUR NAME <YOU@EXAMPLE.COM>]
+ * Copyright (C) [2022 Ruud H.G. van Tol <ruud.vantol+github.com@booking.com>]
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
@@ -30,10 +30,10 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-	DLLEXP int lib_mysql_qtoken_info_init(UDF_INIT *initid, UDF_ARGS *args, char *message);
+	DLLEXP int lib_mysql_qtoken_info_init   (UDF_INIT *initid, UDF_ARGS *args, char *message);
 	DLLEXP void lib_mysql_qtoken_info_deinit(UDF_INIT *initid);
-	/* For functions that return STRING or DECIMAL */ 
-	DLLEXP char *lib_mysql_qtoken_info(UDF_INIT *initid, UDF_ARGS *args, char *result, unsigned long *length, char *is_null, char *error);
+	/* For functions that return STRING or DECIMAL */
+	DLLEXP char *lib_mysql_qtoken_info      (UDF_INIT *initid, UDF_ARGS *args, char *result, unsigned long *length, char *is_null, char *error);
 
 	/* For functions that return REAL */
 	/* DLLEXP double lib_mysql_qtoken_info(UDF_INIT *initid, UDF_ARGS *args, char *is_null, char *error); */
@@ -68,7 +68,7 @@ void lib_mysql_qtoken_info_deinit(UDF_INIT *initid)
 /* For functions that return INTEGER */
 /* longlong lib_mysql_qtoken_info(UDF_INIT *initid, UDF_ARGS *args, char *is_null, char *error) */
 
-/* For functions that return STRING or DECIMAL */ 
+/* For functions that return STRING or DECIMAL */
 char* lib_mysql_qtoken_info(UDF_INIT *initid, UDF_ARGS *args, char* result, unsigned long* length,	char *is_null, char *error)
 {
 	strcpy(result, PACKAGE_STRING);
