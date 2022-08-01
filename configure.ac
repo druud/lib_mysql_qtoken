@@ -1,6 +1,6 @@
-AC_PREREQ(2.59)
+AC_PREREQ([2.71])
 
-AC_INIT(lib_mysql_qtoken,0.0.1,rvantol+github@isolution.nl)
+AC_INIT([lib_mysql_qtoken],[0.0.1],[rvantol+github@isolution.nl])
 
 AC_CONFIG_AUX_DIR(config)
 AC_CONFIG_MACRO_DIR(config)
@@ -8,8 +8,11 @@ AM_CONFIG_HEADER(config.h)
 
 AM_INIT_AUTOMAKE(foreign)
 
-AC_LIBTOOL_WIN32_DLL
-AM_PROG_LIBTOOL
+AC_REQUIRE(AC_CANONICAL_HOST)_LT_SET_OPTION([LT_INIT],[win32-dll])
+m4_warn([obsolete],[AC_LIBTOOL_WIN32_DLL: Remove this warning and the call to _LT_SET_OPTION when you
+put the 'win32-dll' option into LT_INIT's first parameter.])
+
+LT_INIT
 AC_PROG_CC
 
 m4_include(config/ax_lib_mysql.m4)
@@ -28,5 +31,6 @@ AC_C_CONST
 AC_TYPE_SIZE_T
 AC_CHECK_HEADERS(limits.h syslimits.h)
 
-AC_OUTPUT([ Makefile test/Makefile ])
+AC_CONFIG_FILES([ Makefile test/Makefile ])
+AC_OUTPUT
 
