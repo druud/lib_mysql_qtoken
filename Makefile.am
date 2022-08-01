@@ -1,3 +1,5 @@
+ACLOCAL_AMFLAGS = -I config
+
 lib_LTLIBRARIES = lib_mysql_qtoken.la
 lib_mysql_qtoken_la_SOURCES = lib_mysql_qtoken.c mysqludf.c
 lib_mysql_qtoken_la_CFLAGS = -DSTANDARD -DMYSQL_SERVER @MYSQL_CFLAGS@
