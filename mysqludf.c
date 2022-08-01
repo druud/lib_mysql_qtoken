@@ -108,7 +108,7 @@ char *copy_argname(char *att, unsigned long length)
     char quoting = 0;
 
     for (ptr=att; ptr<att+length; ptr++) {
-        if (*ptr == '`') quoting != quoting;
+        if (*ptr == '`') quoting = !quoting;
          else if (!quoting && *ptr == '.') attcl = ptr+1;
     }
 
